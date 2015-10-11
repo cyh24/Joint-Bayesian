@@ -13,6 +13,7 @@
 >python test_lfw.py
 
 # Performance
-Go to see the performance. 
+see the [performance](https://github.com/cyh24/Joint-Bayesian/blob/master/Experiment.pdf). 
 
 >My Blog: 
+http://blog.csdn.net/cyh_24/article/details/49059475
