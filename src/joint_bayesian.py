@@ -57,7 +57,8 @@ def JointBayesian_Train(trainingset, label, fold = "./"):
     oldSw = Sw
     SuFG  = {}
     SwG   = {}
-
+    convergence = 1
+    min_convergence = 1
     for l in range(500):
         F  = np.linalg.pinv(Sw)
         u  = np.zeros([n_dim, n_class])
@@ -82,13 +83,15 @@ def JointBayesian_Train(trainingset, label, fold = "./"):
 
         Su = np.cov(u.T,  rowvar=0)
         Sw = np.cov(ep.T, rowvar=0)
-        print_info("Iterations-" + str(l) + ": "+ str(np.linalg.norm(Sw-oldSw)/np.linalg.norm(Sw)))
-        if np.linalg.norm(Sw-oldSw)/np.linalg.norm(Sw)<1e-7:
-            print "Convergen_classe: ", l
-            ###break;
+        convergence = np.linalg.norm(Sw-oldSw)/np.linalg.norm(Sw))
+        print_info("Iterations-" + str(l) + ": "+ str(convergence)
+        if convergence<1e-6:
+            print "Convergence: ", l, convergence
+            break;
         oldSw=Sw
 
-        if l%5 == 0:
+        if convergence < min_convergence:
+       	    min_convergence = convergence
             F = np.linalg.pinv(Sw)
             G = -np.dot(np.dot(np.linalg.pinv(2*Su+Sw),Su), F)
             A = np.linalg.pinv(Su+Sw)-(F+G)
