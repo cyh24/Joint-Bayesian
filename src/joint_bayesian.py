@@ -83,8 +83,8 @@ def JointBayesian_Train(trainingset, label, fold = "./"):
 
         Su = np.cov(u.T,  rowvar=0)
         Sw = np.cov(ep.T, rowvar=0)
-        convergence = np.linalg.norm(Sw-oldSw)/np.linalg.norm(Sw))
-        print_info("Iterations-" + str(l) + ": "+ str(convergence)
+        convergence = np.linalg.norm(Sw-oldSw)/np.linalg.norm(Sw)
+        print_info("Iterations-" + str(l) + ": "+ str(convergence))
         if convergence<1e-6:
             print "Convergence: ", l, convergence
             break;

@@ -61,6 +61,6 @@ def excute_test(pairlist="../data/pairlist_lfw.mat", test_data="../data/lbp_lfw.
 
 
 if __name__ == "__main__":
-    #excute_train()
-    #excute_test()
+    excute_train()
+    excute_test()
     excute_performance("../result/result.pkl", -16.9, -16.6, 0.01)
